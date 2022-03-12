@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Caleder</title>
+    <link  rel="stylesheet" href="index.css">
+    <link  rel="stylesheet" href="fonts/icomoon/style.css">
+</head>
+<body>
+
+    <div class="calender-main">
+        <div class="left-side">
+            <div class="head">
+                <h4 >February <span style="color: rgb(199, 5, 5);" >2021</span></h4><span>
+                    <i class="icon-chevron-left"></i>
+                    <i class="icon-chevron-right"></i>
+                </span>
+            </div>
+            <table class="side-cal" style="width: 90%;margin: 5px auto;">
+                <thead>
+                    <tr class="days-of-the-week">
+                        <th>Sun</th>
+                        <th>Mon</th>
+                        <th>Tue</th>
+                        <th>Wed</th>
+                        <th>Thur</th>
+                        <th>Fri</th>
+                        <th>Sat</th>
+                    </tr>
+                </thead>
+                <tbody id="side-cal-tbody">
+                 
+                </tbody>
+            </table>
+
+        </div>
+        <div class="right-side">
+            <header class="heading">
+                <div class="switch-day">
+                    <div class="prev"><i class="icon-chevron-left"></i></div>
+                    <div class="switched-day">Today</div>
+                    <div class="next"><i class="icon-chevron-right"></i></div>
+                </div>
+                <div class="cal-filter">
+                    <div class="day-filter"><span>Day</span></div>
+                    <div class="wk-filter"><span>Week</span></div>
+                    <div class="month-filter"><span>Month</span></div>
+                    <div class="yr-filter"><span>Year</span></div>
+                </div>
+                <div class="cal-search">
+                    <div class="search-form">
+                        <i class="search icon-search"></i>
+                        <input type="search" placeholder="Search" />
+                    </div>
+                </div>
+            </header>
+            <section class="schedule-table">
+                <div class="table">
+                    <table >
+                        <thead>
+                            <tr>
+                                <th class="schedule-time"></th>
+                                <th>
+                                    <span>Mon</span>
+                                    <h6>21</h6>
+                                </th>
+                                <th>
+                                    <span>TUE</span>
+                                    <h6>22</h6>
+                                </th>
+                                <th>
+                                    <span>WED</span>
+                                    <h6>23</h6>
+                                </th>
+                                <th>
+                                    <span>THUR</span>
+                                    <h6>24</h6>
+                                </th>
+                                <th>
+                                    <span>FRI</span>
+                                    <h6>25</h6>
+                                </th>
+                                <th>
+                                    <span>SAT</span>
+                                    <h6>26</h6>
+                                </th>
+                                <th>
+                                    <span>SUN</span>
+                                    <h6>27</h6>
+                                </th>
+                                <th><span>EMR GMT-5</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <h6>7 AM</h6>
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><h6>7 AM</h6></td>
+                                
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="./index.js"></script>
+   
+</body>
+</html>

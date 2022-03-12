@@ -1,0 +1,179 @@
+function dispatchData(data,locationId){
+   var select ='';
+  if (locationId == 'days') {
+    select = "<option value='All'>All</option>";
+  }
+  for (var i = 0; i < data.length; i++) {
+    if (locationId == 'days' || locationId == 'months') {
+     select += "<option value="+(i+1)+">"+data[i]+"</option>";
+  }else{
+    select += "<option value="+(data[i])+">"+data[i]+"</option>";
+  }
+  }
+   $("#"+locationId).html(select);
+}
+//6
+function monthByIndex(index){
+  var months = ['January','February','March','April','May',
+  'June','July','August','September','October','November','December'];
+  var month;
+  for (let i = 0; i < months.length; i++) {
+    if (index == i) {
+      month = months[index - 1];
+    }
+  }
+    return month;
+}
+//4
+function dispatchYearData(fromYr,toYr,SelectedYear){
+  var years = range(fromYr,toYr).sort(function(a, b){return b - a});
+  var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var defMonth = months[new Date().getMonth()];
+  yearMonths = yearData(toYr);
+  dispatchData(years,'years');
+  dispatchData(months,'months');
+  for(monthData in yearMonths){
+                for(month  in yearMonths[monthData]){
+                     if (defMonth === month) {
+                           dispatchData(yearMonths[monthData][month]['Days'],'days');
+                      } 
+                  }
+  }
+  $('#months option').each(function(){
+    //the html value is the name of the month...
+    if($(this).html() == defMonth){
+      $(this).attr('selected',true);
+      console.log($(this).html());
+    }
+  })
+}
+
+//3o
+function yearData(year){
+  var monthandDays = [];
+  var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  for(moth in months){
+      monthandDays.push({[months[moth]]:{Days:fetchDays(months[moth],year)}});
+  }
+  console.log(monthandDays);
+  return monthandDays;
+}
+
+//2
+function fetchDays(month,year){
+  var thirtyDays = ['September','April','June','November'];
+  var Days;
+  //february
+     if (month == 'February'){
+      if (year%2== 0) {
+        Days = range(28);
+      }else{
+        Days = range(29);
+      }
+     }else{
+     for(m in thirtyDays){
+      if (thirtyDays[m] === month) {
+        Days = range(30);
+        break
+      }else{
+        Days = range(31);
+      }
+     }
+   }
+     return Days;
+}
+//1
+function range(start,end){
+  var arr = [];
+  if (end == undefined) {
+    for(var i =1;i <= start;i++){
+      arr.push(i);
+    }
+  }else{
+  for (var i = start; i <= end; i++) {
+     arr.push(i);
+  }
+  }
+  return arr;
+}
+/*
+
+
+     
+
+*/
+function FetchYearData(year){
+    var months = ['January','February','March',
+    'April','May','June','July','August',
+    'September','October','November','December'];
+    var monthandDays = [];
+    for (let i = 0; i < months.length; i++) {
+        monthandDays.push({
+        [months[i]]:fetchDays(i+1,year)
+        })
+    }
+    console.log(monthandDays)
+    return monthandDays
+}
+function fetchDays(monthId,year){
+    var thirtyDays = ['September','April','June','November'];
+    var Days;
+    var month = monthByIndex(monthId)
+    //february
+       if (month === 'February'){
+        if (year%2== 0) {
+          Days = range(28,monthId,year);
+        }else{
+          Days = range(29,monthId,year);
+        }
+       }else{
+       for(m in thirtyDays){
+        if (thirtyDays[m] === month) {
+          Days = range(30,monthId,year);
+          break
+        }else{
+          Days = range(31,monthId,year);
+        }
+       }
+     }
+       return Days;
+  }
+  //working 1
+  //index from 1,2 3,..
+  function monthByIndex(index){
+    var months = ['January','February','March','April','May',
+    'June','July','August','September','October','November','December'];
+    var month;
+    for (let i = 0; i < months.length; i++) {
+      if (index == i) {
+        month = months[index - 1];
+      }
+    }
+      return month;
+  }
+  //
+  function fetchDayOfTheWeek(dayIndex){
+    var weekDays = [{id:0,day:'Sun'},{id:1,day:"Mon"},{id:2,day:'Tue'},
+    {id:3,day:"Wed"},{id:4,day:"Thur"},{id:5,day:'Fri'},{id:6,day:"Sat"}
+]   
+let dayOfTheWeek = ""
+        for (let i = 0; i < weekDays.length; i++) {
+            if (weekDays[i].id === dayIndex) {
+                dayOfTheWeek = weekDays[i].day
+                break
+            }
+            
+        }
+        return dayOfTheWeek;
+  }
+  //2
+function range(start,monthId,year){
+    var arr = [];
+      for(var i =1;i <= start;i++){
+        var today = new Date(year,monthId - 1,i)
+        arr.push({
+            dayNo:i,day:fetchDayOfTheWeek(today.getDay())
+        });
+      }
+    return arr;
+  }
