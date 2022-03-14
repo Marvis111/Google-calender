@@ -13,28 +13,23 @@
     <div class="calender-main">
         <div class="left-side">
             <div class="head">
-                <h4 >February <span style="color: rgb(199, 5, 5);" >2021</span></h4><span>
-                    <i class="icon-chevron-left"></i>
-                    <i class="icon-chevron-right"></i>
+                <h4 ><span id="month"></span><b id="monthId" style="display: none;"></b>
+                     <span style="color: rgb(199, 5, 5);" id="year" ></span>
+                    </h4><span>
+                    <i class="icon-chevron-left" id="prev" onclick="toMonth('prev')"></i>
+                    <i class="icon-chevron-right" id="next" onclick="toMonth('next')"></i>
                 </span>
             </div>
             <table class="side-cal" style="width: 90%;margin: 5px auto;">
                 <thead>
                     <tr class="days-of-the-week">
-                        <th>Sun</th>
-                        <th>Mon</th>
-                        <th>Tue</th>
-                        <th>Wed</th>
-                        <th>Thur</th>
-                        <th>Fri</th>
-                        <th>Sat</th>
+                        <th>Sun</th><th>Mon</th><th>Tue</th>
+                        <th>Wed</th><th>Thur</th><th>Fri</th><th>Sat</th>
                     </tr>
                 </thead>
                 <tbody id="side-cal-tbody">
-                 
                 </tbody>
             </table>
-
         </div>
         <div class="right-side">
             <header class="heading">
